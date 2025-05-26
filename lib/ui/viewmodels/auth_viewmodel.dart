@@ -4,6 +4,8 @@ import 'package:pomato_flutter/ui/providers/providers.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../../data/models/auth_model.dart';
 import '../../data/repositories/auth_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:pomato_flutter/ui/pages/login/login_page.dart';
 
 enum AuthProvider {
   google,
@@ -16,8 +18,11 @@ class AuthViewModel extends Notifier<AuthModel> {
   late final IAuthRepository _authRepository = ref.read(authRepositoryProvider);
   final GoogleSignIn _googleSignIn;
 
+  void Function(BuildContext)? onLogout;
+
   AuthViewModel({
     GoogleSignIn? googleSignIn,
+    this.onLogout,
   }) : _googleSignIn = googleSignIn ?? GoogleSignIn();
 
   @override
@@ -99,14 +104,23 @@ class AuthViewModel extends Notifier<AuthModel> {
     }
   }
 
-  Future<void> logout() async {
+  Future<void> logout(BuildContext context) async {
     try {
+      await _authRepository.logout(state.refreshToken!);
       await _googleSignIn.signOut();
       state = AuthModel(
         accessToken: '',
         refreshToken: '',
         provider: null,
       );
+
+      if (context.mounted) {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => const LoginPage()),
+          (route) => false,
+        );
+      }
     } catch (e) {
       throw Exception('로그아웃 실패: $e');
     }
