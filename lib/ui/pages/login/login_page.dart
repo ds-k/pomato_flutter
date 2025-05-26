@@ -30,18 +30,18 @@ class _LoginPageState extends State<LoginPage> {
   final List<CarouselItem> _carouselItems = [
     CarouselItem(
       imagePath: 'assets/images/login/carousel_1.png',
-      title: '내 주변 열린집을\n지도에서 한번에 조회',
-      description: '열린집은 이사시 발생하는 물건을\n일괄 판매할 수 있는 플랫폼입니다',
+      title: '내 주변 포마토를\n지도에서 한번에 조회',
+      description: '포마토는 이사시 발생하는 물건을\n일괄 판매할 수 있는 플랫폼입니다',
     ),
     CarouselItem(
       imagePath: 'assets/images/login/carousel_2.png',
       title: '열린집',
-      description: '열린집은 이사시 발생하는 물건을\n일괄 판매할 수 있는 플랫폼입니다',
+      description: '포마토는 이사시 발생하는 물건을\n일괄 판매할 수 있는 플랫폼입니다',
     ),
     CarouselItem(
       imagePath: 'assets/images/login/carousel_3.png',
       title: '열린집',
-      description: '열린집은 이사시 발생하는 물건을\n일괄 판매할 수 있는 플랫폼입니다',
+      description: '포마토는 이사시 발생하는 물건을\n일괄 판매할 수 있는 플랫폼입니다',
     ),
   ];
 
@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius:
                         BorderRadius.circular(_currentPage == index ? 4 : 100),
                     color: _currentPage == index
-                        ? AppColors.mainGreen
+                        ? AppColors.mainOrange
                         : AppColors.lightGray,
                   ),
                 ),

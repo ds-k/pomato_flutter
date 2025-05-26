@@ -46,7 +46,7 @@ class LoginBottomSheet extends ConsumerWidget {
             ),
           ),
           const Text(
-            '로그인 후 열린집을 이용해 보세요.',
+            '로그인 후 포마토를 이용해 보세요.',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -155,10 +155,10 @@ class LoginBottomSheet extends ConsumerWidget {
                 child: const Text(
                   "이용약관/개인정보 처리방침",
                   style: TextStyle(
-                    color: AppColors.mainGreen,
+                    color: AppColors.mainOrange,
                     fontSize: 12,
                     decoration: TextDecoration.underline,
-                    decorationColor: AppColors.mainGreen,
+                    decorationColor: AppColors.mainOrange,
                   ),
                 ),
               ),

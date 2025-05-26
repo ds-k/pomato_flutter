@@ -9,7 +9,19 @@ enum AuthProvider {
   apple,
 }
 
-class AuthViewModel extends Notifier<AuthModel> {
+class AuthState {
+  final String accessToken;
+  final String refreshToken;
+  final AuthProvider? provider;
+
+  AuthState({
+    required this.accessToken,
+    required this.refreshToken,
+    required this.provider,
+  });
+}
+
+class AuthViewModel extends Notifier<AuthState> {
   final IAuthRepository _authRepository;
   final GoogleSignIn _googleSignIn;
 
@@ -20,8 +32,12 @@ class AuthViewModel extends Notifier<AuthModel> {
         _googleSignIn = googleSignIn ?? GoogleSignIn();
 
   @override
-  AuthModel build() {
-    return AuthModel();
+  AuthState build() {
+    return AuthState(
+      accessToken: '',
+      refreshToken: '',
+      provider: null,
+    );
   }
 
   Future<void> signInWithGoogle() async {
@@ -42,7 +58,11 @@ class AuthViewModel extends Notifier<AuthModel> {
 
       final auth =
           await _authRepository.socialLogin(idToken, AuthProvider.google.name);
-      state = auth;
+      state = AuthState(
+        accessToken: auth.accessToken ?? '',
+        refreshToken: auth.refreshToken ?? '',
+        provider: AuthProvider.google,
+      );
     } catch (e) {
       throw Exception('Google 로그인 실패: $e');
     }
@@ -65,7 +85,11 @@ class AuthViewModel extends Notifier<AuthModel> {
         credential.identityToken!,
         AuthProvider.apple.name,
       );
-      state = auth;
+      state = AuthState(
+        accessToken: auth.accessToken ?? '',
+        refreshToken: auth.refreshToken ?? '',
+        provider: AuthProvider.apple,
+      );
     } catch (e) {
       throw Exception('Apple 로그인 실패: $e');
     }
@@ -76,7 +100,11 @@ class AuthViewModel extends Notifier<AuthModel> {
 
     try {
       final auth = await _authRepository.refreshToken(state.refreshToken!);
-      state = auth;
+      state = AuthState(
+        accessToken: auth.accessToken ?? '',
+        refreshToken: auth.refreshToken ?? '',
+        provider: state.provider,
+      );
     } catch (e) {
       throw Exception('토큰 갱신 실패: $e');
     }
@@ -85,13 +113,17 @@ class AuthViewModel extends Notifier<AuthModel> {
   Future<void> logout() async {
     try {
       await _googleSignIn.signOut();
-      state = AuthModel();
+      state = AuthState(
+        accessToken: '',
+        refreshToken: '',
+        provider: null,
+      );
     } catch (e) {
       throw Exception('로그아웃 실패: $e');
     }
   }
 }
 
-final authViewModelProvider = NotifierProvider<AuthViewModel, AuthModel>(() {
+final authViewModelProvider = NotifierProvider<AuthViewModel, AuthState>(() {
   return AuthViewModel();
 });

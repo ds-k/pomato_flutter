@@ -14,11 +14,14 @@ class AuthRepository implements IAuthRepository {
     Dio? dio,
     String? baseUrl,
   })  : _dio = dio ?? Dio(),
-        _baseUrl = baseUrl ?? 'YOUR_NEST_SERVER_URL';
+        _baseUrl = const String.fromEnvironment("API_SERVER_URL");
 
   @override
   Future<AuthModel> socialLogin(String token, String provider) async {
     try {
+      print(token);
+      print(provider);
+      print(_baseUrl);
       final response = await _dio.post(
         '$_baseUrl/auth/social-login',
         data: {
