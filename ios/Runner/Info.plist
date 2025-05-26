@@ -52,10 +52,13 @@
  	        <string>Editor</string>
  	        <key>CFBundleURLSchemes</key>
  	        <array>
- 	        <string>com.googleusercontent.apps.1049421998893-n3c5g43mphhu9b58e79ggjifh5nrb1k8</string>
+ 	        	<string>com.googleusercontent.apps.1049421998893-n3c5g43mphhu9b58e79ggjifh5nrb1k8</string>
+				<string>me.pomato.app</string>
  	        </array>
  	    </dict>
  	</array>
+	<key>SignInWithApple</key>
+	<true/>
 	<key>GIDClientID</key>
 	<string>1049421998893-n3c5g43mphhu9b58e79ggjifh5nrb1k8.apps.googleusercontent.com</string>
 </dict>
