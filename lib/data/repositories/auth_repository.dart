@@ -28,8 +28,8 @@ class AuthRepository implements IAuthRepository {
       );
 
       return AuthModel(
-        accessToken: response.data['accessToken'],
-        refreshToken: response.data['refreshToken'],
+        accessToken: response.data['access_token'],
+        refreshToken: response.data['refresh_token'],
         provider: provider,
       );
     } catch (e) {

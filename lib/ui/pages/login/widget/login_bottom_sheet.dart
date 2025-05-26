@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../ui/viewmodels/auth_viewmodel.dart';
 import '../../../../constant/colors.dart';
-import '../../../pages/home/home_page.dart';
+import '../../../pages/layout/layout_page.dart';
 import 'privacy_policy_page.dart';
 
 class LoginBottomSheet extends ConsumerWidget {
@@ -69,7 +69,7 @@ class LoginBottomSheet extends ConsumerWidget {
                 if (context.mounted) {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(builder: (context) => const LayoutPage()),
                   );
                 }
               } catch (error) {
@@ -106,7 +106,7 @@ class LoginBottomSheet extends ConsumerWidget {
                 if (context.mounted) {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(builder: (context) => const LayoutPage()),
                   );
                 }
               } catch (error) {

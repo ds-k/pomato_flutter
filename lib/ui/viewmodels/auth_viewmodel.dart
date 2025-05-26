@@ -46,6 +46,7 @@ class AuthViewModel extends Notifier<AuthModel> {
 
       final auth =
           await _authRepository.socialLogin(idToken, AuthProvider.google.name);
+
       state = AuthModel(
         accessToken: auth.accessToken ?? '',
         refreshToken: auth.refreshToken ?? '',
