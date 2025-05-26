@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:pomato_flutter/ui/providers/providers.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../../data/models/auth_model.dart';
 import '../../data/repositories/auth_repository.dart';
@@ -9,31 +10,19 @@ enum AuthProvider {
   apple,
 }
 
-class AuthState {
-  final String accessToken;
-  final String refreshToken;
-  final AuthProvider? provider;
+// secure_storage
 
-  AuthState({
-    required this.accessToken,
-    required this.refreshToken,
-    required this.provider,
-  });
-}
-
-class AuthViewModel extends Notifier<AuthState> {
-  final IAuthRepository _authRepository;
+class AuthViewModel extends Notifier<AuthModel> {
+  late final IAuthRepository _authRepository = ref.read(authRepositoryProvider);
   final GoogleSignIn _googleSignIn;
 
   AuthViewModel({
-    IAuthRepository? authRepository,
     GoogleSignIn? googleSignIn,
-  })  : _authRepository = authRepository ?? AuthRepository(),
-        _googleSignIn = googleSignIn ?? GoogleSignIn();
+  }) : _googleSignIn = googleSignIn ?? GoogleSignIn();
 
   @override
-  AuthState build() {
-    return AuthState(
+  AuthModel build() {
+    return AuthModel(
       accessToken: '',
       refreshToken: '',
       provider: null,
@@ -51,17 +40,16 @@ class AuthViewModel extends Notifier<AuthState> {
           await googleUser.authentication;
       final String? idToken = googleAuth.idToken;
 
-      print(idToken);
       if (idToken == null) {
         throw Exception('ID Token을 가져오는데 실패했습니다.');
       }
 
       final auth =
           await _authRepository.socialLogin(idToken, AuthProvider.google.name);
-      state = AuthState(
+      state = AuthModel(
         accessToken: auth.accessToken ?? '',
         refreshToken: auth.refreshToken ?? '',
-        provider: AuthProvider.google,
+        provider: AuthProvider.google.name,
       );
     } catch (e) {
       throw Exception('Google 로그인 실패: $e');
@@ -85,10 +73,10 @@ class AuthViewModel extends Notifier<AuthState> {
         credential.identityToken!,
         AuthProvider.apple.name,
       );
-      state = AuthState(
+      state = AuthModel(
         accessToken: auth.accessToken ?? '',
         refreshToken: auth.refreshToken ?? '',
-        provider: AuthProvider.apple,
+        provider: AuthProvider.apple.name,
       );
     } catch (e) {
       throw Exception('Apple 로그인 실패: $e');
@@ -100,7 +88,7 @@ class AuthViewModel extends Notifier<AuthState> {
 
     try {
       final auth = await _authRepository.refreshToken(state.refreshToken!);
-      state = AuthState(
+      state = AuthModel(
         accessToken: auth.accessToken ?? '',
         refreshToken: auth.refreshToken ?? '',
         provider: state.provider,
@@ -113,7 +101,7 @@ class AuthViewModel extends Notifier<AuthState> {
   Future<void> logout() async {
     try {
       await _googleSignIn.signOut();
-      state = AuthState(
+      state = AuthModel(
         accessToken: '',
         refreshToken: '',
         provider: null,
@@ -124,6 +112,6 @@ class AuthViewModel extends Notifier<AuthState> {
   }
 }
 
-final authViewModelProvider = NotifierProvider<AuthViewModel, AuthState>(() {
+final authViewModelProvider = NotifierProvider<AuthViewModel, AuthModel>(() {
   return AuthViewModel();
 });

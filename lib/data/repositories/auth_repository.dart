@@ -19,9 +19,6 @@ class AuthRepository implements IAuthRepository {
   @override
   Future<AuthModel> socialLogin(String token, String provider) async {
     try {
-      print(token);
-      print(provider);
-      print(_baseUrl);
       final response = await _dio.post(
         '$_baseUrl/auth/social-login',
         data: {
