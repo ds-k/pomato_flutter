@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>79595153500-ncp5ro72k6c3pvcu5ssu1k6k7nk1eo9n.apps.googleusercontent.com</string>
+	<string>1049421998893-n3c5g43mphhu9b58e79ggjifh5nrb1k8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.79595153500-ncp5ro72k6c3pvcu5ssu1k6k7nk1eo9n</string>
+	<string>com.googleusercontent.apps.1049421998893-n3c5g43mphhu9b58e79ggjifh5nrb1k8</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.yeollinjib.myapp</string>
+	<string>me.pomato.app</string>
 </dict>
 </plist>

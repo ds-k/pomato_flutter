@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ylj_flutter/constant/colors.dart';
-import 'package:ylj_flutter/ui/pages/profile/profile_page.dart';
+import 'package:pomato_flutter/constant/colors.dart';
+import 'package:pomato_flutter/ui/pages/profile/profile_page.dart';
 import '../home/home_page.dart';
 
 class LayoutPage extends StatefulWidget {

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:ylj_flutter/ui/pages/layout/layout_page.dart';
-import 'package:ylj_flutter/ui/pages/login/login_page.dart';
-import 'package:ylj_flutter/ui/pages/splash/splash_page.dart';
+import 'package:pomato_flutter/ui/pages/splash/splash_page.dart';
+
 import 'constant/colors.dart';
 
 void main() {
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ylj flutter project',
+      title: 'pomato_flutter',
       theme: ThemeData(
         fontFamily: 'Pretendard',
         scaffoldBackgroundColor: AppColors.white,

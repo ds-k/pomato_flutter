@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../ui/viewmodels/auth_viewmodel.dart';
 import '../../../../constant/colors.dart';
-import '../../../pages/home/home_page.dart';
+import '../../../pages/layout/layout_page.dart';
 import 'privacy_policy_page.dart';
 
 class LoginBottomSheet extends ConsumerWidget {
@@ -46,7 +46,7 @@ class LoginBottomSheet extends ConsumerWidget {
             ),
           ),
           const Text(
-            '로그인 후 열린집을 이용해 보세요.',
+            '로그인 후 포마토를 이용해 보세요.',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -69,7 +69,7 @@ class LoginBottomSheet extends ConsumerWidget {
                 if (context.mounted) {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(builder: (context) => const LayoutPage()),
                   );
                 }
               } catch (error) {
@@ -106,7 +106,7 @@ class LoginBottomSheet extends ConsumerWidget {
                 if (context.mounted) {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(builder: (context) => const LayoutPage()),
                   );
                 }
               } catch (error) {
@@ -155,10 +155,10 @@ class LoginBottomSheet extends ConsumerWidget {
                 child: const Text(
                   "이용약관/개인정보 처리방침",
                   style: TextStyle(
-                    color: AppColors.mainGreen,
+                    color: AppColors.mainOrange,
                     fontSize: 12,
                     decoration: TextDecoration.underline,
-                    decorationColor: AppColors.mainGreen,
+                    decorationColor: AppColors.mainOrange,
                   ),
                 ),
               ),

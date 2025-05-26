@@ -1,13 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pomato_flutter/ui/providers/providers.dart';
 import '../../data/models/user_model.dart';
 import '../../data/repositories/user_repository.dart';
 
 class UserViewModel extends Notifier<UserModel> {
-  final IUserRepository _userRepository;
-
-  UserViewModel({
-    IUserRepository? userRepository,
-  }) : _userRepository = userRepository ?? UserRepository();
+  late final IUserRepository _userRepository = ref.read(userRepositoryProvider);
 
   @override
   UserModel build() {

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>열린집</string>
+	<string>포마토</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>ylj_flutter</string>
+	<string>pomato</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -52,11 +52,14 @@
  	        <string>Editor</string>
  	        <key>CFBundleURLSchemes</key>
  	        <array>
- 	        <string>com.googleusercontent.apps.79595153500-ncp5ro72k6c3pvcu5ssu1k6k7nk1eo9n</string>
+ 	        	<string>com.googleusercontent.apps.1049421998893-n3c5g43mphhu9b58e79ggjifh5nrb1k8</string>
+				<string>me.pomato.app</string>
  	        </array>
  	    </dict>
  	</array>
+	<key>SignInWithApple</key>
+	<true/>
 	<key>GIDClientID</key>
-	<string>79595153500-ncp5ro72k6c3pvcu5ssu1k6k7nk1eo9n.apps.googleusercontent.com</string>
+	<string>1049421998893-n3c5g43mphhu9b58e79ggjifh5nrb1k8.apps.googleusercontent.com</string>
 </dict>
 </plist>

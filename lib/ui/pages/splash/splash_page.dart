@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ylj_flutter/ui/pages/login/login_page.dart';
+import 'package:pomato_flutter/constant/colors.dart';
+import 'package:pomato_flutter/ui/pages/login/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -36,8 +37,11 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SvgPicture.asset('assets/images/splash/splash_logo.svg'),
+      body: Container(
+        color: AppColors.mainOrange,
+        child: Center(
+          child: SvgPicture.asset('assets/images/splash/splash_logo.svg'),
+        ),
       ),
     );
   }

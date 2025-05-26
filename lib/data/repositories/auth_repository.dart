@@ -14,7 +14,7 @@ class AuthRepository implements IAuthRepository {
     Dio? dio,
     String? baseUrl,
   })  : _dio = dio ?? Dio(),
-        _baseUrl = baseUrl ?? 'YOUR_NEST_SERVER_URL';
+        _baseUrl = const String.fromEnvironment("API_SERVER_URL");
 
   @override
   Future<AuthModel> socialLogin(String token, String provider) async {
@@ -28,8 +28,8 @@ class AuthRepository implements IAuthRepository {
       );
 
       return AuthModel(
-        accessToken: response.data['accessToken'],
-        refreshToken: response.data['refreshToken'],
+        accessToken: response.data['access_token'],
+        refreshToken: response.data['refresh_token'],
         provider: provider,
       );
     } catch (e) {
